@@ -44,6 +44,6 @@ class User extends Authenticatable
     ];
 
     static $ROLE_ADMIN = "admin";
-    static $ROLE_CONSUMER = "admin";
-    static $ROLE_PENYELENGGARA = "admin";
+    static $ROLE_CONSUMER = "consumer";
+    static $ROLE_PENYELENGGARA = "penyelenggara";
 }
