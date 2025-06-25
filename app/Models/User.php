@@ -20,6 +20,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'role',
         'password',
     ];
 
@@ -41,4 +42,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    static $ROLE_ADMIN = "admin";
+    static $ROLE_CONSUMER = "admin";
+    static $ROLE_PENYELENGGARA = "admin";
 }
