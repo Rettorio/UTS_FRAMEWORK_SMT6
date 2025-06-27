@@ -13,6 +13,6 @@ class AdminController extends Controller
 
     public function dashboard() {
         // nanti rubah pake template sama dashboard admin
-        return view('admin.index');
+        return view('admin.dashboard');
     }
 }

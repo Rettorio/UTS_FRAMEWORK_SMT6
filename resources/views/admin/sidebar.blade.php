@@ -1,0 +1,18 @@
+    <li class="nav-item">
+      <a class="nav-link" href="index.html">
+        <i class="icon-grid menu-icon"></i>
+        <span class="menu-title">Dashboard</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{ route('admin.wisata.index') }}">
+        <i class="mdi mdi-airballoon  menu-icon"></i>
+        <span class="menu-title">Wisata</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="../../../docs/documentation.html">
+        <i class="mdi mdi-pine-tree  menu-icon"></i>
+        <span class="menu-title">Daftar Event</span>
+      </a>
+    </li>

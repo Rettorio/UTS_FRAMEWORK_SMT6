@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ConsumerController;
 use App\Http\Controllers\PenyelenggaraController;
+use App\Http\Controllers\WisataController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -41,6 +42,7 @@ Route::post('/penyelenggara/login', [AuthController::class, 'login']);
 Route::middleware(['auth', 'role:' . User::$ROLE_ADMIN])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('index');
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+    Route::resource('wisata', WisataController::class);
     // tambahkan route admin lain disini
 });
 
@@ -57,6 +59,3 @@ Route::middleware(['auth', 'role:' . User::$ROLE_CONSUMER])->prefix('consumer')-
     Route::get('/dashboard', [ConsumerController::class, 'dashboard'])->name('dashboard');
     // tambahkan route consumer lain di bawah sini
 });
-
-
-// Tinggal kalian buat route crud data event (penyelenggara) sama data wisata (admin), data penyelenggara (admin) saja
