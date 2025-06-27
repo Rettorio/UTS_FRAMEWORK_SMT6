@@ -31,11 +31,11 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // --- ADMIN LOGIN ---
 Route::get('/admin/login', [AuthController::class, 'showAdminLoginForm'])->name('admin.login');
-Route::post('/admin/login', [AuthController::class, 'login']); 
+Route::post('/admin/login', [AuthController::class, 'login']);
 
 // --- PENYELENGGARA LOGIN ---
 Route::get('/penyelenggara/login', [AuthController::class, 'showPenyelenggaraLoginForm'])->name('penyelenggara.login');
-Route::post('/penyelenggara/login', [AuthController::class, 'login']); 
+Route::post('/penyelenggara/login', [AuthController::class, 'login']);
 
 
 Route::middleware(['auth', 'role:' . User::$ROLE_ADMIN])->prefix('admin')->name('admin.')->group(function () {
@@ -57,6 +57,8 @@ Route::middleware(['auth', 'role:' . User::$ROLE_CONSUMER])->prefix('consumer')-
     Route::get('/dashboard', [ConsumerController::class, 'dashboard'])->name('dashboard');
     // tambahkan route consumer lain di bawah sini
 });
+
+
 
 
 // Tinggal kalian buat route crud data event (penyelenggara) sama data wisata (admin), data penyelenggara (admin) saja
