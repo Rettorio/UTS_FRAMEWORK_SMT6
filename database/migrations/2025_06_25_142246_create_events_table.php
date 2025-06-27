@@ -9,23 +9,26 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
-    {
+   public function up(): void
+{
+    if (!Schema::hasTable('event')) {
         Schema::create('event', function (Blueprint $table) {
             $table->id();
-            $table->string("nama_event")->nullable("false");
-            $table->string("deskripsi")->nullable("false")->default("-");
-            $table->string("lokasi")->nullable("falase")->default("-");
-            $table->dateTime("jadwal_mulai")->nullable(false);
-            $table->dateTime("jadwal_selesai")->nullable(false);
-            $table->string("banner1")->nullable(false); // tiap event minimal punya 1 gambar
-            $table->string("banner2")->nullable(false);
-            $table->string("banner3")->nullable(false);
-            $table->foreignId("pelenyenggara")->nullable("false")->constrained("users");
-            $table->bigInteger("harga_tiket")->unsigned();
+            $table->string('nama_event')->nullable();
+            $table->string('deskripsi')->nullable()->default('-');
+            $table->string('lokasi')->nullable()->default('-');
+            $table->dateTime('jadwal_mulai');
+            $table->dateTime('jadwal_selesai');
+            $table->string('banner1');
+            $table->string('banner2');
+            $table->string('banner3');
+            $table->unsignedBigInteger('pelenyenggara')->nullable();
+            $table->unsignedBigInteger('harga_tiket');
             $table->timestamps();
         });
     }
+}
+
 
     /**
      * Reverse the migrations.
