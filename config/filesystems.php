@@ -44,6 +44,13 @@ return [
             'throw' => false,
         ],
 
+        'wisata_assets' => [
+            'driver' => 'local',
+            'root' => public_path('assets/wisata'), // Store directly in public/assets/wisata
+            'url' => env('APP_URL').'/assets/wisata', // Your desired base URL
+            'visibility' => 'public',
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

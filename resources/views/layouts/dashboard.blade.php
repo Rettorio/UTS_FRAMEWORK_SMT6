@@ -11,9 +11,9 @@
     <link rel="stylesheet" href="/skydash/src/assets/vendors/css/vendor.bundle.base.css">
     <link rel="stylesheet" href="/skydash/src/assets/vendors/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/skydash/src/assets/vendors/mdi/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="assets/vendors/ti-icons/css/themify-icons.css">
     <link rel="stylesheet" href="/skydash/src/assets/css/style.css">
     @yield('stylecss')
+    @vite('resources/css/app.css')
   </head>
   <body>
     <div class="container-scroller">
@@ -134,7 +134,6 @@
     <!-- container-scroller -->
     <!-- plugins:js -->
     <script src="/skydash/src/assets/vendors/js/vendor.bundle.base.js"></script>
-    @yield('js')
     <!-- End plugin js for this page -->
     <!-- inject:js -->
     <script src="/skydash/src/assets/js/off-canvas.js"></script>
@@ -142,5 +141,7 @@
     <script src="/skydash/src/assets/js/settings.js"></script>
     <!-- <script src="/skydash/src/assets/js/Chart.roundedBarCharts.js"></script> -->
     <!-- End custom js for this page-->
+    @vite('resources/js/app.js')
+    @yield('js')
   </body>
 </html>
