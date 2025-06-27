@@ -7,56 +7,63 @@ use App\Http\Controllers\PenyelenggaraController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
 Route::get('/', function () {
     return view('welcome');
 });
 
-// --- Consumer / Pembeli tiket halaman login ---
-// This will be the default fallback for Auth::middleware('auth') if not specified otherwise
+// ============================
+//         AUTH ROUTE
+// ============================
+
+// Login untuk Customer / Pembeli Tiket
 Route::get('/login', [AuthController::class, 'showConsumerLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-
-// --- ADMIN LOGIN ---
+// Login untuk Admin
 Route::get('/admin/login', [AuthController::class, 'showAdminLoginForm'])->name('admin.login');
 Route::post('/admin/login', [AuthController::class, 'login']); 
 
-// --- PENYELENGGARA LOGIN ---
+// Login untuk Penyelenggara
 Route::get('/penyelenggara/login', [AuthController::class, 'showPenyelenggaraLoginForm'])->name('penyelenggara.login');
 Route::post('/penyelenggara/login', [AuthController::class, 'login']); 
 
 
-Route::middleware(['auth', 'role:' . User::$ROLE_ADMIN])->prefix('admin')->name('admin.')->group(function () {
-    Route::get('/', [AdminController::class, 'index'])->name('index');
-    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
-    // tambahkan route admin lain disini
-});
-
-// Protected Penyelenggara Routes
-Route::middleware(['auth', 'role:' . User::$ROLE_PENYELENGGARA])->prefix('penyelenggara')->name('penyelenggara.')->group(function () {
-    Route::get('/', [PenyelenggaraController::class, 'index'])->name('index');
-    Route::get('/dashboard', [PenyelenggaraController::class, 'dashboard'])->name('dashboard');
-    // tambahkan route penyelenggara lain di bawah sini
-});
-
-// Protected Consumer Routes
-Route::middleware(['auth', 'role:' . User::$ROLE_CONSUMER])->prefix('consumer')->name('consumer.')->group(function () {
-    Route::get('/', [ConsumerController::class, 'index'])->name('index');
-    Route::get('/dashboard', [ConsumerController::class, 'dashboard'])->name('dashboard');
-    // tambahkan route consumer lain di bawah sini
-});
+// ============================
+//         ADMIN ROUTE
+// ============================
+Route::middleware(['auth', 'role:' . User::$ROLE_ADMIN])
+    ->prefix('admin')
+    ->name('admin.')
+    ->group(function () {
+        Route::get('/', [AdminController::class, 'index'])->name('index');
+        Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+    });
 
 
-// Tinggal kalian buat route crud data event (penyelenggara) sama data wisata (admin), data penyelenggara (admin) saja
+// ============================
+//     PENYELENGGARA ROUTE
+// ============================
+Route::middleware(['auth', 'role:' . User::$ROLE_PENYELENGGARA])
+    ->prefix('penyelenggara')
+    ->name('penyelenggara.')
+    ->group(function () {
+        Route::get('/', [PenyelenggaraController::class, 'index'])->name('index');
+        Route::get('/create', [PenyelenggaraController::class, 'create'])->name('create');
+        Route::post('/', [PenyelenggaraController::class, 'store'])->name('store');
+        Route::delete('/{id}', [PenyelenggaraController::class, 'destroy'])->name('destroy');
+        Route::get('/{id}/edit', [PenyelenggaraController::class, 'edit'])->name('edit');
+        Route::put('/{id}', [PenyelenggaraController::class, 'update'])->name('update');
+    });
+
+
+// ============================
+//         CUSTOMER ROUTE
+// ============================
+Route::middleware(['auth', 'role:' . User::$ROLE_CONSUMER])
+    ->prefix('customer')
+    ->name('customer.')
+    ->group(function () {
+        Route::get('/', [ConsumerController::class, 'index'])->name('index');
+        Route::get('/dashboard', [ConsumerController::class, 'dashboard'])->name('dashboard');
+    });

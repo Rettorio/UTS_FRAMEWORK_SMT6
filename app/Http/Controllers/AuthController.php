@@ -42,7 +42,7 @@ class AuthController extends Controller
 
             $user = Auth::user();
 
-            $fallbackRouteName = 'consumer.index';
+            $fallbackRouteName = 'customer.index';
 
             switch ($user->role) {
                 case User::$ROLE_ADMIN:
