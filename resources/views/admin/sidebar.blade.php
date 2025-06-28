@@ -1,5 +1,5 @@
     <li class="nav-item">
-      <a class="nav-link" href="index.html">
+      <a class="nav-link" href="{{ route('admin.index') }}">
         <i class="icon-grid menu-icon"></i>
         <span class="menu-title">Dashboard</span>
       </a>
@@ -11,7 +11,7 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="../../../docs/documentation.html">
+      <a class="nav-link" href="{{ route('admin.event') }}">
         <i class="mdi mdi-pine-tree  menu-icon"></i>
         <span class="menu-title">Daftar Event</span>
       </a>

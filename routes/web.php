@@ -43,6 +43,7 @@ Route::middleware(['auth', 'role:' . User::$ROLE_ADMIN])->prefix('admin')->name(
     Route::get('/', [AdminController::class, 'index'])->name('index');
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
     Route::resource('wisata', WisataController::class);
+    Route::get('daftar-event', [AdminController::class, 'daftarEvent'])->name('event');
     // tambahkan route admin lain disini
 });
 
