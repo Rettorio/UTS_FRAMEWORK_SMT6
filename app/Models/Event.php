@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
 
 class Event extends Model
@@ -33,5 +34,9 @@ class Event extends Model
     
     public function setJadwalSelesaiAttribute($value) {
         $this->attributes['jadwal_selesai'] = Carbon::parse($value)->toDateTime();
+    }
+
+    public function partner(): BelongsTo {
+       return $this->belongsTo(User::class, 'penyelenggara', 'id');
     }
 }
