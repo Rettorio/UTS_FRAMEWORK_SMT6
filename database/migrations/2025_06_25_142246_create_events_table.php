@@ -19,9 +19,9 @@ return new class extends Migration
             $table->dateTime("jadwal_mulai")->nullable(false);
             $table->dateTime("jadwal_selesai")->nullable(false);
             $table->string("banner1")->nullable(false); // tiap event minimal punya 1 gambar
-            $table->string("banner2")->nullable(false);
-            $table->string("banner3")->nullable(false);
-            $table->foreignId("pelenyenggara")->nullable("false")->constrained("users");
+            $table->string("banner2")->nullable(true);
+            $table->string("banner3")->nullable(true);
+            $table->foreignId("penyelenggara")->nullable("false")->constrained("users");
             $table->bigInteger("harga_tiket")->unsigned();
             $table->timestamps();
         });
