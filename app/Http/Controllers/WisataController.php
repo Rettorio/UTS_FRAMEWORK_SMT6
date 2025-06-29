@@ -154,7 +154,7 @@ class WisataController extends Controller
      */
     public function destroy(Wisata $wisatum)
     {
-        //
-        dd($wisatum);
+        $wisatum->delete();
+        return redirect()->back();
     }
 }

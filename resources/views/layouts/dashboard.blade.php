@@ -125,13 +125,14 @@
     <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ms-1"></i></span>
   </div>
 </footer>
-          <!-- partial -->
+<!-- partial -->
         </div>
         <!-- main-panel ends -->
       </div>
       <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
+    @vite('resources/js/app.js')
     <!-- plugins:js -->
     <script src="/skydash/src/assets/vendors/js/vendor.bundle.base.js"></script>
     <!-- End plugin js for this page -->
@@ -141,7 +142,6 @@
     <script src="/skydash/src/assets/js/settings.js"></script>
     <!-- <script src="/skydash/src/assets/js/Chart.roundedBarCharts.js"></script> -->
     <!-- End custom js for this page-->
-    @vite('resources/js/app.js')
     @yield('js')
   </body>
 </html>

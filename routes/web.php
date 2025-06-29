@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ConsumerController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\PenyelenggaraController;
 use App\Http\Controllers\WisataController;
 use App\Models\User;
@@ -49,9 +50,9 @@ Route::middleware(['auth', 'role:' . User::$ROLE_ADMIN])->prefix('admin')->name(
 
 // Protected Penyelenggara Routes
 Route::middleware(['auth', 'role:' . User::$ROLE_PENYELENGGARA])->prefix('penyelenggara')->name('penyelenggara.')->group(function () {
-    Route::get('/', [PenyelenggaraController::class, 'index'])->name('index');
-    Route::get('/dashboard', [PenyelenggaraController::class, 'dashboard'])->name('dashboard');
+    Route::get('/', [PenyelenggaraController::class, 'dashboard'])->name('dashboard');
     // tambahkan route penyelenggara lain di bawah sini
+    Route::resource('event', EventController::class);
 });
 
 // Protected Consumer Routes

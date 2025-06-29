@@ -49,7 +49,7 @@ class AuthController extends Controller
                     $fallbackRouteName = 'admin.index';
                     break;
                 case User::$ROLE_PENYELENGGARA:
-                    $fallbackRouteName = 'penyelenggara.index';
+                    $fallbackRouteName = 'penyelenggara.dashboard';
                     break;
             }
             return redirect()->intended(route($fallbackRouteName));
